@@ -1,3 +1,5 @@
+## This is a fully functional PHP blog with an Admin dashboard that can create, edit and delete the blog posts . Audience can view the post and also use contact form. More functionality for comments etc to be added soon . . .
+
 Plan of action
 
 Ability to create, delete, update and delete Article.
