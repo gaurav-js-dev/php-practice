@@ -2,6 +2,8 @@
 
 require 'includes/database.php';
 
+$conn = getDB();
+
 if (isset($_GET['id']) && is_numeric($_GET['id']))
     $sql = "SELECT *
         FROM article
@@ -23,9 +25,9 @@ $article = mysqli_fetch_assoc($results);
     <?php else : ?>
 
         <article>
-            <h2><?= $article['title']; ?></h2>
-            <small><?= $article['date']; ?></small>
-            <p><?= $article['content']; ?></p>
+            <h2><?= htmlspecialchars($article['title']); ?></h2>
+            <small><?= htmlspecialchars($article['published_date']); ?></small>
+            <p><?= htmlspecialchars($article['content']); ?></p>
         </article>
 
 </div>

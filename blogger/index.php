@@ -2,9 +2,11 @@
 
 require 'includes/database.php';
 
+$conn = getDB();
+
 $sql = "SELECT *
         FROM article
-        ORDER BY date;";
+        ORDER BY published_date;";
 
 $results = mysqli_query($conn, $sql);
 
@@ -26,9 +28,9 @@ if ($results === false) {
             <?php foreach ($articles as $article) : ?>
                 <li>
                     <article>
-                        <h2> <a href="article.php?id=<?= $article['id']; ?>"> <?= $article['title']; ?></a></h2>
-                        <small><?= $article['date']; ?></small>
-                        <p><?= $article['content']; ?></p>
+                        <h2> <a href="article.php?id=<?= $article['id']; ?>"> <?= htmlspecialchars($article['title']); ?></a></h2>
+                        <small><?= htmlspecialchars($article['published_date']); ?></small>
+                        <p><?= htmlspecialchars($article['content']); ?></p>
                     </article>
                 </li>
             <?php endforeach; ?>

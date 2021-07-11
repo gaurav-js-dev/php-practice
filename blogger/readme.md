@@ -33,3 +33,13 @@ ToDo > Insert Data Through Form
 2. Refactor to Classes
 
 3. Update and delete
+
+-- Parking Lot --
+
+Avoid Duplicate
+
+Readable Date Format
+
+Bootstrap Modal
+
+---
