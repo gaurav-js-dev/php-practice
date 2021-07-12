@@ -1,25 +1,17 @@
 <?php
-
 require 'includes/database.php';
+require 'includes/article.php';
 
 $conn = getDB();
 
-if (isset($_GET['id']) && is_numeric($_GET['id']))
-    $sql = "SELECT *
-        FROM article
-        WHERE id =" . $_GET['id'];
-
-$results = mysqli_query($conn, $sql);
-
-$article = mysqli_fetch_assoc($results);
-
-
+if (isset($_GET['id'])) {
+    $article = getArticle($conn, $_GET['id']);
+} else {
+    $article = null;
+}
 ?>
-
 <?php require 'includes/header.php'; ?>
-
 <div class="article">
-
     <?php if ($article === null) : ?>
         <p>Article Not Found</p>
     <?php else : ?>
@@ -33,6 +25,5 @@ $article = mysqli_fetch_assoc($results);
 </div>
 
 <?php endif; ?>
-
 
 <?php require 'includes/footer.php'; ?>

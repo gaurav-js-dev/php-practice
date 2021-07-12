@@ -1,8 +1,7 @@
 <?php
-
 require 'includes/database.php';
+require 'includes/article.php';
 
-$errors = [];
 $title = '';
 $content = '';
 $published_date = '';
@@ -12,18 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $published_date = $_POST['published_date'];
-
-    if ($title == '') {
-        $errors[] = 'Title is required';
-    }
-    if ($content == '') {
-        $errors[] = 'Content is required';
-    }
-
-    if ($published_date == '') {
-        $errors[] = 'Date is required';
-    }
-
+    $errors = validateArticle($title, $content, $published_date);
 
     if (empty($errors)) {
 
@@ -38,12 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo mysqli_error($conn);
         } else {
 
-            mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at']);
+            mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_date']);
 
             if (mysqli_stmt_execute($stmt)) {
 
                 $id = mysqli_insert_id($conn);
-                echo "Inserted record with ID: $id";
+
+                if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+                    $protocol = 'https';
+                } else {
+                    $protocol = 'http';
+                }
+
+                header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/projects/blogger/article.php?id=$id");
+                exit;
             } else {
 
                 echo mysqli_stmt_error($stmt);
@@ -54,39 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
+
 <?php require 'includes/header.php'; ?>
+
 <h2>New article</h2>
 
-<?php if (!empty($errors)) : ?>
-    <ul>
-        <?php foreach ($errors as $error) : ?>
-            <li><?= $error ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+<?php require 'includes/article-form.php'; ?>
 
-<form method="post">
-
-
-    <div>
-        <label for="title">Title</label>
-        <input value="<?= htmlspecialchars($title); ?>" autocomplete="off" name="title" id="title" placeholder="Article title">
-    </div>
-
-    <div>
-        <label for="content">Content</label>
-        <textarea name="content" autocomplete="off" rows="4" cols="40" id="content" placeholder="Article content"><?= htmlspecialchars($content); ?></textarea>
-    </div>
-
-    <div>
-        <label for="published_date">Publication date</label>
-        <input value="<?= htmlspecialchars($published_date); ?>" type="date" name="published_date" id="published_date">
-    </div>
-
-    <button>Add</button>
-
-</form>
-
-
-</div>
 <?php require 'includes/footer.php'; ?>
