@@ -6,7 +6,7 @@ $conn = getDB();
 
 $sql = "SELECT *
         FROM article
-        ORDER BY published_date;";
+        ORDER BY published_date DESC;";
 
 $results = mysqli_query($conn, $sql);
 

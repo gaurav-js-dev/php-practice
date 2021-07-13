@@ -1,6 +1,7 @@
 <?php
 require 'includes/database.php';
 require 'includes/article.php';
+require 'includes/url.php';
 
 $title = '';
 $content = '';
@@ -26,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo mysqli_error($conn);
         } else {
 
-            mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_date']);
-
+            mysqli_stmt_bind_param($stmt, "sss", $title, $content, $published_date);
             if (mysqli_stmt_execute($stmt)) {
 
                 $id = mysqli_insert_id($conn);
@@ -38,7 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $protocol = 'http';
                 }
 
-                header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/projects/blogger/article.php?id=$id");
+                redirect("$id");
+
                 exit;
             } else {
 
