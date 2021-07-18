@@ -42,4 +42,8 @@ Readable Date Format
 
 Bootstrap Modal
 
+Save in Draft = unpublished
+
+published SQL column
+
 ---
