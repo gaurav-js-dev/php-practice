@@ -31,6 +31,14 @@ class Article
      * @var date
      */
     public $published_date;
+
+    /**
+     * Validation errors
+     * @var array
+     */
+    public $errors = [];
+
+
     /**
      * Get all the articles
      *
@@ -47,6 +55,15 @@ class Article
         return $results->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Get the article record based on the ID
+     *
+     * @param object $conn Connection to the database
+     * @param integer $id the article ID
+     * @param string $columns Optional list of columns for the select, defaults to *
+     *
+     * @return mixed An object of this class, or null if not found
+     */
     public static function getByID($conn, $id, $columns = "*")
     {
         $sql = "SELECT $columns
@@ -65,24 +82,77 @@ class Article
         }
     }
 
+    /**
+     * Update the article with its current property values
+     *
+     * @param object $conn Connection to the database
+     *
+     * @return boolean True if the update was successful, false otherwise
+     */
+
     public function update($conn)
     {
-        $sql = "UPDATE article 
+        if ($this->validate()) {
+            $sql = "UPDATE article 
                 SET title = :title,content = :content,published_date = :published_date 
                 WHERE id = :id";
 
-        $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
-        $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
+            $stmt->bindValue(':content', $this->content, PDO::PARAM_STR);
 
-        if ($this->published_date == '') {
-            $stmt->bindValue(':published_date', null, PDO::PARAM_NULL);
+            if ($this->published_date == '') {
+                $stmt->bindValue(':published_date', null, PDO::PARAM_NULL);
+            } else {
+                $stmt->bindValue(':published_date', $this->published_date, PDO::PARAM_STR);
+            }
+
+            return $stmt->execute();
         } else {
-            $stmt->bindValue(':published_date', $this->published_date, PDO::PARAM_STR);
+            return false;
+        }
+    }
+
+
+    /**
+     * Validate the properties, putting any validation error messages in the $errors property
+     *
+     * @return boolean True if the current properties are valid, false otherwise
+     */
+
+
+    protected function validate()
+    {
+
+        if ($this->title == '') {
+            $this->errors[] = 'Title is required';
+        }
+        if ($this->content == '') {
+            $this->errors[] = 'Content is required';
         }
 
-        return $stmt->execute();
+        if ($this->published_date == '') {
+            $this->errors[] = 'Date is required';
+        }
+
+        if ($this->published_date != '') {
+            $date_time = date_create_from_format('Y-m-d', $this->published_date);
+
+            if ($date_time === false) {
+
+                $this->errors[] = 'Invalid date and time';
+            } else {
+
+                $date_errors = date_get_last_errors();
+
+                if ($date_errors['warning_count'] > 0) {
+                    $this->errors[] = 'Invalid date and time';
+                }
+            }
+        }
+
+        return empty($this->errors);
     }
 }

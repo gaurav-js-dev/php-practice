@@ -34,37 +34,3 @@ function getArticle($conn, $id, $columns = "*")
  *
  * @return array An array of validation error messages
  */
-
-function validateArticle($title, $content, $published_date)
-{
-    $errors = [];
-
-    if ($title == '') {
-        $errors[] = 'Title is required';
-    }
-    if ($content == '') {
-        $errors[] = 'Content is required';
-    }
-
-    if ($published_date == '') {
-        $errors[] = 'Date is required';
-    }
-
-    if ($published_date != '') {
-        $date_time = date_create_from_format('Y-m-d', $published_date);
-
-        if ($date_time === false) {
-
-            $errors[] = 'Invalid date and time';
-        } else {
-
-            $date_errors = date_get_last_errors();
-
-            if ($date_errors['warning_count'] > 0) {
-                $errors[] = 'Invalid date and time';
-            }
-        }
-    }
-
-    return  $errors;
-}

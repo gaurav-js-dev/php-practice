@@ -2,7 +2,6 @@
 
 require 'classes/Database.php';
 require 'classes/Article.php';
-require 'includes/article.php';
 require 'includes/url.php';
 
 $db = new Database();
@@ -25,12 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $article->content = $_POST['content'];
     $article->published_date = $_POST['published_date'];
 
-    $errors = validateArticle($article->title, $article->content, $article->published_date);
-
-    if (empty($errors)) {
-        if ($article->update($conn)) {
-            redirect("$article->id");
-        }
+    if ($article->update($conn)) {
+        redirect("$article->id");
     }
 }
 
