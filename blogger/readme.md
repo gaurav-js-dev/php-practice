@@ -42,7 +42,11 @@ Readable Date Format
 
 Bootstrap Modal
 
-Save in Draft = unpublished
+Save in Draft Button = unpublished
+
+Unpublished date = null,
+
+Don't display unpublished to public
 
 published SQL column
 

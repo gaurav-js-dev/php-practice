@@ -1,22 +1,18 @@
 <?php
 
-require 'includes/database.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 require 'includes/article.php';
 require 'includes/url.php';
 
-$conn = getDB();
+$db = new Database();
+$conn = $db->getConn();
 
 if (isset($_GET['id'])) {
 
-    $article = getArticle($conn, $_GET['id']);
+    $article = Article::getByID($conn, $_GET['id']);
 
-    if ($article) {
-        $id = $article['id'];
-        $title = $article['title'];
-        $content = $article['content'];
-        $published_date = $article['published_date'];
-    } else {
-
+    if (!$article) {
         die("article not found");
     }
 } else {
@@ -25,30 +21,16 @@ if (isset($_GET['id'])) {
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $published_date = $_POST['published_date'];
+    $article->title = $_POST['title'];
+    $article->content = $_POST['content'];
+    $article->published_date = $_POST['published_date'];
 
-    $errors = validateArticle($title, $content, $published_date);
+    $errors = validateArticle($article->title, $article->content, $article->published_date);
 
     if (empty($errors)) {
-
-        $sql = "UPDATE article 
-                SET title = ?,content = ?,published_date = ? 
-                WHERE id = ?";
-    }
-
-    $stmt = mysqli_prepare($conn, $sql);
-    if ($stmt === false) {
-        echo mysqli_error($conn);
-    } else {
-        mysqli_stmt_bind_param($stmt, "sssi", $title, $content, $published_date, $id);
-    }
-    if (mysqli_stmt_execute($stmt)) {
-        redirect("$id");
-    } else {
-
-        echo mysqli_stmt_error($stmt);
+        if ($article->update($conn)) {
+            redirect("$article->id");
+        }
     }
 }
 

@@ -1,27 +1,27 @@
 <?php
-require 'includes/database.php';
-require 'includes/article.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 
-$conn = getDB();
+$db = new Database();
+$conn = $db->getConn();
 
 if (isset($_GET['id'])) {
-    $article = getArticle($conn, $_GET['id']);
+    $article = Article::getByID($conn, $_GET['id']);
 } else {
     $article = null;
 }
 ?>
 <?php require 'includes/header.php'; ?>
 <div class="article">
-    <?php if ($article === null) : ?>
-        <p>Article Not Found</p>
-    <?php else : ?>
+    <?php if ($article) : ?>
+
 
         <article>
-            <h2><?= htmlspecialchars($article['title']); ?></h2>
-            <small><?= htmlspecialchars($article['published_date']); ?></small>
-            <p><?= htmlspecialchars($article['content']); ?></p>
+            <h2><?= htmlspecialchars($article->title); ?></h2>
+            <small><?= htmlspecialchars($article->published_date); ?></small>
+            <p><?= htmlspecialchars($article->content); ?></p>
         </article>
-        <a href="./edit-article.php?id=<?= $article['id']; ?>">Edit </a>
+        <a href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <form method="post" action="delete-article.php?id=<?= $article['id']; ?>">
+                        <form method="post" action="delete-article.php?id=<?= $article->id; ?>">
                             <button type="submit" class="btn btn-primary">Delete</button>
                         </form>
                     </div>
@@ -48,7 +48,8 @@ if (isset($_GET['id'])) {
             Delete
         </button>
 </div>
-
+<?php else : ?>
+    <p>Article Not Found</p>
 <?php endif; ?>
 
 <?php require 'includes/footer.php'; ?>
