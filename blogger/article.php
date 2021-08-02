@@ -37,9 +37,11 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                         <form method="post" action="delete-article.php?id=<?= $article->id; ?>">
                             <button type="submit" class="btn btn-primary">Delete</button>
                         </form>
+
                     </div>
                 </div>
             </div>
