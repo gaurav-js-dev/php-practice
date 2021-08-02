@@ -2,10 +2,10 @@
 
 require 'classes/Database.php';
 require 'classes/Article.php';
-require 'includes/url.php';
+require 'classes/Url.php';
 
-$db = new Database();
-$conn = $db->getConn();
+$conn = require 'includes/db.php';
+
 
 if (isset($_GET['id'])) {
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $article->published_date = $_POST['published_date'];
 
     if ($article->update($conn)) {
-        redirect("$article->id");
+        Url::redirect("$article->id");
     }
 }
 

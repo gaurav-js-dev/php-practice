@@ -1,15 +1,13 @@
 <?php
 
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'includes/url.php';
+require 'includes/init.php';
 
-$db = new Database();
-$conn = $db->getConn();
+$conn = require 'includes/db.php';
+
 
 if (isset($_GET['id'])) {
 
-    $article = Article::getByID($conn, $_GET['id']);
+    $article = Article::getByID($conn, $_GET['id'], $columns = "id");
 
     if (!$article) {
         die("article not found");

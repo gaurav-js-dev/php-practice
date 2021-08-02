@@ -7,8 +7,12 @@
  *
  * @return void
  */
-function redirect($id)
+class Url
 {
-    header("Location: article.php?id=$id");
-    exit;
+
+    public static function redirect($id)
+    {
+        header("Location: article.php?id=$id");
+        exit;
+    }
 }
