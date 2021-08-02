@@ -19,6 +19,6 @@ if (isset($_GET['id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($article->delete($conn)) {
-        header("Location: ./");
+        header("Location: index.php");
     }
 }

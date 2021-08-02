@@ -1,9 +1,7 @@
 <?php
 require 'includes/init.php';
 
-if (!Auth::isLoggedIn()) {
-    die('Unauthorized');
-}
+Auth::requireLogin();
 
 $article = new Article();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

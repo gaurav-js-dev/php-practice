@@ -2,15 +2,11 @@
 
 Plan of action
 
-Ability to create, delete, update and delete Article.
-
-CRUD functionality.
-
 Admin Section to Show All articles in a table,
 
 Only Admin can make changes.
 
-Others can read the articles and also add images.
+Others can read the articles
 
 Pagination.
 
@@ -18,21 +14,9 @@ Show date added in admin section and to public.
 
 - Admin Folder
 
-- Classes Folder
-
-- common forms at once place
-
-- Include header, footer and init calls
-
 - contact form and error handling
 
 ------------------ Flow -----------
-
-ToDo > Insert Data Through Form
-
-2. Refactor to Classes
-
-3. Update and delete
 
 -- Parking Lot --
 

@@ -1,9 +1,5 @@
 <?php
-
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'classes/Url.php';
-
+require 'includes/init.php';
 $conn = require 'includes/db.php';
 
 
