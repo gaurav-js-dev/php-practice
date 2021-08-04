@@ -24,12 +24,10 @@ $articles = Article::getAll($conn);
     <?php else : ?>
         <table class="table table-striped table-bordered" id='index'>
             <thead class="thead-light">
-
                 <tr>
-                    <th scope="col">S.No.</th>
+                    <th class="col-1" scope="col">S.No.</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Published Date</th>
+                    <th scope="col">Date</th>
                 </tr>
 
 
@@ -37,7 +35,6 @@ $articles = Article::getAll($conn);
                     <tr>
                         <td><?= $key + 1; ?></td>
                         <td><a href="article.php?id=<?= $article['id']; ?>"> <?= htmlspecialchars($article['title']); ?></a></td>
-                        <td><?= htmlspecialchars($article['content']); ?></td>
                         <td><?= htmlspecialchars($article['published_date']); ?></td>
                     </tr>
                 <?php endforeach; ?>

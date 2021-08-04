@@ -13,9 +13,12 @@ if (isset($_GET['id'])) {
 ?>
 <?php require 'includes/header.php'; ?>
 
+<div>
+    <p><a href="new-article.php">New article</a></p>
+</div>
+
 <div class="article">
     <?php if ($article) : ?>
-
 
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
