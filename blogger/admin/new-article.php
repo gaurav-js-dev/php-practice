@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $article->published_date = $_POST['published_date'];
 
     if ($article->create($conn)) {
-        Url::redirect("$article->id");
+        header("Location: article.php?id=$article->id");
     }
 }
 
