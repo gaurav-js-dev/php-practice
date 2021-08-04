@@ -22,4 +22,10 @@ Don't display unpublished to public
 
 published SQL column
 
+Admin View Sort By Date, S.no. Title upon clicking on it,
+
+Audience view sort by date, title
+
+Restrict future date, give error if more than today is selected
+
 ---

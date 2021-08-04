@@ -6,7 +6,9 @@ Auth::requireLogin();
 
 $conn = require 'includes/db.php';
 
-$articles = Article::getAll($conn);
+$paginator = new Paginator($_GET['page'] ?? 1, 10, Article::getTotal($conn));
+
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 
@@ -38,10 +40,9 @@ $articles = Article::getAll($conn);
                         <td><?= htmlspecialchars($article['published_date']); ?></td>
                     </tr>
                 <?php endforeach; ?>
-
-
             </thead>
         </table>
+        <?php require 'includes/paginator.php'; ?>
 </div>
 <?php endif; ?>
 <?php require 'includes/footer.php'; ?>
