@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <button>Delete</button>
 
-    <a href="#">Cancel</a>
+    <a href="edit-article-image.php?id=<?= $article->id; ?>">Cancel</a>
 
 
 </form>
