@@ -28,4 +28,6 @@ Audience view sort by date, title
 
 Restrict future date, give error if more than today is selected
 
+Pencil icon for edit and x icon for delete in Admin Area
+
 ---

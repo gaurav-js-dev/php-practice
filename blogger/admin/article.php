@@ -23,6 +23,11 @@ if (isset($_GET['id'])) {
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
             <small><?= htmlspecialchars($article->published_date); ?></small>
+
+            <?php if ($article->image_file) : ?>
+                <img src="../uploads/<?= $article->image_file; ?>">
+            <?php endif; ?>
+
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
         <a href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>

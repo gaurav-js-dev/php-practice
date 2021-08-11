@@ -14,10 +14,12 @@ if (isset($_GET['id'])) {
 <?php require 'includes/header.php'; ?>
 <div class="article">
     <?php if ($article) : ?>
-
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
             <small><?= htmlspecialchars($article->published_date); ?></small>
+            <?php if ($article->image_file) : ?>
+                <img src="uploads/<?= $article->image_file; ?>">
+            <?php endif; ?>
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
 
