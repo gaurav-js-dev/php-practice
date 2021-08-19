@@ -31,3 +31,12 @@ Restrict future date, give error if more than today is selected
 Pencil icon for edit and x icon for delete in Admin Area
 
 ---
+
+WIP
+
+Delete image inside edit article, delete-article-image.php
+Edit Article Page should also display image if it exists and give an option to delete it.
+
+Edit article form should also show an input to display an image ?
+
+call post method only from a single input ?
