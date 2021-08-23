@@ -2,6 +2,10 @@
 
 require 'includes/init.php';
 
+if (Auth::isLoggedIn()) {
+    header("Location: admin/index.php");
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $conn = require 'includes/db.php';
@@ -9,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (User::authenticate($conn, $_POST['username'], $_POST['password'])) {
 
         Auth::login();
-        header("Location: index.php");
+        header("Location: admin/index.php");
     } else {
         $error = 'Login Incorrect UserName or Password';
     }

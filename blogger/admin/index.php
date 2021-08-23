@@ -29,6 +29,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
                 <tr>
                     <th class="col-1" scope="col">S.No.</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Date</th>
                 </tr>
 
@@ -37,6 +38,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
                     <tr>
                         <td><?= $key + 1; ?></td>
                         <td><a href="article.php?id=<?= $article['id']; ?>"> <?= htmlspecialchars($article['title']); ?></a></td>
+                        <td><a target="_blank" href="../uploads/<?= $article['image_file']; ?>"> <?= htmlspecialchars($article['image_file']); ?></a></td>
                         <td><?= htmlspecialchars($article['published_date']); ?></td>
                     </tr>
                 <?php endforeach; ?>
