@@ -6,8 +6,6 @@
 
 -- Parking Lot --
 
-Avoid Duplicate
-
 Readable Date Format
 
 Admin View Sort By Date, S.no. Title upon clicking on it,
@@ -17,8 +15,6 @@ Audience view sort by date, title
 Restrict future date, give error if more than today is selected
 
 Pencil icon for edit and x icon for delete in Admin Area inside table.
-
-Move to Draft link or icon
 
 Delete image inside edit article, delete-article-image.php
 
@@ -32,18 +28,12 @@ if empty checks for edit and delete article image page if image doesn't exists d
 
 Fix the projects/blogger/admin issue and ahref link issues
 
-/projects/blogger/js/script.js
-
 Styling
 
 add button vs edit button
-
-$categories = Category::getAll($conn); is creating issues
-
-jQuery for Save as Draft for edit article and make date value blank
 
 ---
 
 Intro,
 
-Working CRUD, File Uploads, Authentication,
+Working CRUD, File Uploads, Authentication, Pagination
