@@ -13,17 +13,31 @@ class Database
      * @return PDO object Connection to the database server
      */
 
+
+    protected $db_host;
+
+    protected $db_name;
+
+    protected $db_user;
+
+    protected $db_pass;
+
+    public function __construct($host, $name, $user, $password)
+    {
+        $this->db_host = $host;
+        $this->db_name = $name;
+        $this->db_user   = $user;
+        $this->db_pass = $password;
+    }
+
     public function getConn()
     {
-        $db_host = "mysql";
-        $db_name = "blogger";
-        $db_user = "root";
-        $db_pass = "root";
 
-        $dsn = 'mysql:host=' . $db_host . ';dbname=' . $db_name . ';charset=utf8';
+
+        $dsn = 'mysql:host=' . $this->db_host . ';dbname=' . $this->db_name . ';charset=utf8';
 
         try {
-            $db = new PDO($dsn, $db_user, $db_pass);
+            $db = new PDO($dsn, $this->db_user, $this->db_pass);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $db;
