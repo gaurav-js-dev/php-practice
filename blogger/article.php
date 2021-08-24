@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
         </article>
 
     <?php else : ?>
-        <p>Article Not Found</p>
+        <p>Article Does not exist</p>
     <?php endif; ?>
 
     <?php require 'includes/footer.php'; ?>
