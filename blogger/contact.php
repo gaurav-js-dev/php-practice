@@ -67,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<h2>Contact</h2>
 
 <?php if ($sent) : ?>
     <p>Message sent.</p>
@@ -80,27 +79,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
+    <div class="container bg-light my-5 p-5">
 
-    <form method="post" id="formContact">
+        <h1 class="h3 mb-3 font-weight-normal">Contact Us</h1>
+        <form method="post" id="formContact">
+            <div class="form-group">
+                <label for="email">Your email</label>
+                <input class="form-control" name="email" id="email" type="email" placeholder="Your email" value="<?= htmlspecialchars($email) ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="email">Your email</label>
-            <input class="form-control" name="email" id="email" type="email" placeholder="Your email" value="<?= htmlspecialchars($email) ?>">
-        </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input class="form-control" name="subject" id="subject" placeholder="Subject" value="<?= htmlspecialchars($subject) ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="subject">Subject</label>
-            <input class="form-control" name="subject" id="subject" placeholder="Subject" value="<?= htmlspecialchars($subject) ?>">
-        </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" name="message" id="message" placeholder="Message"><?= htmlspecialchars($message) ?></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" name="message" id="message" placeholder="Message"><?= htmlspecialchars($message) ?></textarea>
-        </div>
+            <button class="btn">Send</button>
 
-        <button class="btn">Send</button>
-
-    </form>
+        </form>
+    </div>
 
 <?php endif; ?>
 

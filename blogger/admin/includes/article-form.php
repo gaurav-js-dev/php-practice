@@ -6,24 +6,22 @@
     </ul>
 <?php endif; ?>
 
-<form method="post">
-
-
-    <div>
+<form method="post" class="container">
+    <div class="form-group ">
         <label for="title">Title</label>
-        <input value="<?= htmlspecialchars($article->title); ?>" autocomplete="off" name="title" id="title" placeholder="Article title">
+        <input class="form-control col-auto" value="<?= htmlspecialchars($article->title); ?>" autocomplete="off" name="title" id="title" placeholder="Article title">
     </div>
 
-    <div>
+    <div class="form-group ">
         <label for="content">Content</label>
-        <textarea name="content" autocomplete="off" rows="4" cols="40" id="content" placeholder="Article content"><?= htmlspecialchars($article->content); ?></textarea>
+        <textarea class="form-control col-auto" name="content" autocomplete="off" rows="4" cols="40" id="content" placeholder="Article content"><?= htmlspecialchars($article->content); ?></textarea>
     </div>
 
-    <div>
+    <div class="form-group ">
         <label for="published_date">Publication date</label>
-        <input value="<?= htmlspecialchars($article->published_date); ?>" type="date" name="published_date" id="published_date">
+        <input class="form-control col-3" value="<?= htmlspecialchars($article->published_date); ?>" type="date" name="published_date" id="published_date">
     </div>
 
-    <button>Add</button>
+    <button type="submit" class="btn btn-primary">Add</button>
 
 </form>

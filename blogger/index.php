@@ -18,7 +18,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
         <ul id='index'>
             <?php foreach ($articles as $article) : ?>
                 <li>
-                    <article>
+                    <article class="p-2">
                         <h2> <a href="article.php?id=<?= $article['id']; ?>"> <?= htmlspecialchars($article['title']); ?></a></h2>
                         <small><?= htmlspecialchars($article['published_date']); ?></small>
                         <p><?= htmlspecialchars($article['content']); ?></p>

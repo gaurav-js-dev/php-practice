@@ -12,7 +12,7 @@ class Auth
     public static function requireLogin()
     {
         if (!static::isLoggedIn()) {
-            die("Not Logged In Unauthorized");
+            header("Location: /projects/blogger");
         }
     }
 

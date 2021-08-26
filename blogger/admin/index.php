@@ -18,7 +18,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 <a class="btn btn-secondary" href="new-article.php">New article</a>
 
-<div class="articles my-2">
+<div class="articles py-4">
 
     <?php if (empty($articles)) : ?>
         <p>No Articles Found</p>

@@ -6,7 +6,7 @@
 
 -- Parking Lot --
 
-Readable Date Format
+More Readable Date Format
 
 Admin View Sort By Date, S.no. Title upon clicking on it,
 
@@ -26,7 +26,7 @@ call post method only from a single input ?
 
 if empty checks for edit and delete article image page if image doesn't exists don't show the prompt to delete an image,
 
-Fix the projects/blogger/admin issue and ahref link issues
+projects/blogger/admin and ahref link
 
 add button vs edit button
 
