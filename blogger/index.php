@@ -10,7 +10,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 ?>
 
 <?php require 'includes/header.php'; ?>
-<div class="articles">
+<div class="articles container bg-light p-5">
 
     <?php if (empty($articles)) : ?>
         <p>No Articles Found</p>

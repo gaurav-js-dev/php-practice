@@ -28,9 +28,9 @@ if empty checks for edit and delete article image page if image doesn't exists d
 
 Fix the projects/blogger/admin issue and ahref link issues
 
-Styling
-
 add button vs edit button
+
+Previous Post and Next Post Button in single article
 
 ---
 

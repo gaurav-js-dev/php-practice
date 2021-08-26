@@ -16,7 +16,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 <h4 class="h4 text-center">Administrator Area</h4>
 
-<p><a href="new-article.php">New article</a></p>
+<button class="btn-primary"><a href="new-article.php">New article</a></button>
 
 
 <div class="articles">
@@ -27,7 +27,6 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
         <table class="table table-striped table-bordered" id='index'>
             <thead class="thead-light">
                 <tr>
-                    <th class="col-1" scope="col">S.No.</th>
                     <th scope="col">Title</th>
                     <th scope="col">Image</th>
                     <th scope="col">Date</th>
@@ -36,7 +35,6 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
                 <?php foreach ($articles as $key =>  $article) : ?>
                     <tr>
-                        <td><?= $key + 1; ?></td>
                         <td><a href="article.php?id=<?= $article['id']; ?>"> <?= htmlspecialchars($article['title']); ?></a></td>
                         <td><a target="_blank" href="../uploads/<?= $article['image_file']; ?>"> <?= htmlspecialchars($article['image_file']); ?></a></td>
                         <td><?= htmlspecialchars($article['published_date']); ?></td>
