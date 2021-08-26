@@ -14,12 +14,11 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 <?php require 'includes/header.php'; ?>
 
-<h4 class="h4 text-center">Administrator Area</h4>
+<h4 class="h4 text-center p-2">Administrator Area</h4>
 
-<button class="btn-primary"><a href="new-article.php">New article</a></button>
+<a class="btn btn-secondary" href="new-article.php">New article</a>
 
-
-<div class="articles">
+<div class="articles my-2">
 
     <?php if (empty($articles)) : ?>
         <p>No Articles Found</p>

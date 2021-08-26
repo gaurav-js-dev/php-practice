@@ -10,7 +10,8 @@ if (isset($_GET['id'])) {
 }
 ?>
 <?php require 'includes/header.php'; ?>
-<div class="article">
+<div class="article container bg-light p-4">
+
     <?php if ($article) : ?>
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
@@ -20,7 +21,6 @@ if (isset($_GET['id'])) {
             <?php endif; ?>
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
-
     <?php else : ?>
         <p>Article Does not exist</p>
     <?php endif; ?>

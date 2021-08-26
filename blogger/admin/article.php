@@ -13,23 +13,22 @@ if (isset($_GET['id'])) {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<div>
-    <p><a href="new-article.php">New article</a></p>
-</div>
 
-<div class="article">
+
+<div class="article container bg-light p-4">
+    <a class="btn btn-secondary my-4" href="new-article.php">New article</a>
     <?php if ($article) : ?>
 
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
-            <p><?= htmlspecialchars($article->published_date); ?></p>
+            <p>Published on <?= htmlspecialchars($article->published_date); ?></p>
             <?php if ($article->image_file) : ?>
                 <img src="../uploads/<?= $article->image_file; ?>">
             <?php endif; ?>
 
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
-        <a href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>
+        <a class="btn btn-info my-4" href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -47,14 +46,14 @@ if (isset($_GET['id'])) {
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                         <form method="post" action="delete-article.php?id=<?= $article->id; ?>">
-                            <button type="submit" class="btn btn-primary">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
 
                     </div>
                 </div>
             </div>
         </div>
-        <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
+        <button class="btn btn-danger my-4" type="button" data-toggle="modal" data-target="#exampleModalCenter">
             Delete
         </button>
 </div>
