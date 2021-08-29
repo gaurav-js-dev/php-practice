@@ -16,7 +16,7 @@ This applications includes various features as below
 
 ## Demo (Live Site)
 
-[Click Here to see version of Blog](http://blogger.com/){:target="\_blank"}
+[Click Here to see version of Blog](http://blogger.com/){:target="_blank" rel="noopener"}
 
 To access the admin area use following credentials
 
