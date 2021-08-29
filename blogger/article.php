@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
             <?php if ($article->image_file) : ?>
                 <img src="uploads/<?= $article->image_file; ?>">
             <?php endif; ?>
-            <p><?= htmlspecialchars($article->content); ?></p>
+            <p class="my-4"><?= htmlspecialchars($article->content); ?></p>
         </article>
     <?php else : ?>
         <p>Article Does not exist</p>

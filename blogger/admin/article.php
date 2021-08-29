@@ -14,9 +14,9 @@ if (isset($_GET['id'])) {
 <?php require 'includes/header.php'; ?>
 
 
-
+<a class="btn btn-secondary my-4" href="new-article.php">New article</a>
 <div class="article container bg-light p-4">
-    <a class="btn btn-secondary my-4" href="new-article.php">New article</a>
+
     <?php if ($article) : ?>
 
         <article>

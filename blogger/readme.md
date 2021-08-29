@@ -1,6 +1,22 @@
 ##PHP Blog App
 
-### This is a fully functional PHP blog with an Admin dashboard that can create, edit and delete the blog posts including images and text. Audience can view the post and also use contact form. More functionality for comments, admin roles etc to be added soon . . .
+#### This a simple web blog with an Admin dashboard from which admin can create, edit and delete the blog posts including adding images and text content. Audience can navigate and view the post and also use contact form to send queries. This blog utilizes mainly PHP for everything.
+
+This applications includes various features like
+
+- CRUD functionality with MYSQl database
+
+- Image upload storage, handling & deletion.
+
+- Authentication with secure storage of credentials.
+
+- Pagination
+
+- PHPMailer library for contact form.
+
+## Usage
+
+To run this project locally please clone this repo on your machine then add your own Database configuration details in **config.php** in root folder.
 
 ------------------ Flow -----------
 
@@ -33,7 +49,3 @@ add button vs edit button
 Previous Post and Next Post Button in single article
 
 ---
-
-Intro,
-
-Working CRUD, File Uploads, Authentication, Pagination
