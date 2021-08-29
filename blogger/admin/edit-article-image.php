@@ -98,8 +98,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </form>
 
-<h2>Edit article</h2>
-
-<?php require 'includes/article-form.php'; ?>
-
 <?php require 'includes/footer.php'; ?>

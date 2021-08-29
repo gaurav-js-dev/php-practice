@@ -35,33 +35,3 @@ define('DB_PASS', **'your DB password'**);
 define('SMTP_HOST', 'mail.example.com');  
 define('SMTP_USER', 'user@example.com');  
 define('SMTP_PASS', 'secret pass');
-
--- Parking Lot --
-
-More Readable Date Format
-
-Admin View Sort By Date, S.no. Title upon clicking on it,
-
-Audience view sort by date, title
-
-Restrict future date, give error if more than today is selected
-
-Pencil icon for edit and x icon for delete in Admin Area inside table.
-
-Delete image inside edit article, delete-article-image.php
-
-Edit Article Page should also display image if it exists and give an option to delete it and delete should show a modal for confirmation this modal code should be generic - common.
-
-Edit article form should also show an input to display an image ?
-
-call post method only from a single input ?
-
-if empty checks for edit and delete article image page if image doesn't exists don't show the prompt to delete an image,
-
-projects/blogger/admin and ahref link
-
-add button vs edit button
-
-Previous Post and Next Post Button in single article
-
----

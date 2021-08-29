@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
             <small> <time datetime="<?= $article->published_date ?>">
                     <?php
                     $datetime = new DateTime($article->published_date);
-                    echo $datetime->format("F, Y");
+                    echo $datetime->format("F j, Y");
                     ?></time></small>
 
             <?php if ($article->image_file) : ?>
@@ -33,6 +33,7 @@ if (isset($_GET['id'])) {
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
         <a class="btn btn-info my-4" href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>
+        <a class="btn btn-dark my-4" href="./edit-article-image.php?id=<?= $article->id; ?>">Add Image </a>
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
