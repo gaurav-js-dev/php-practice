@@ -15,17 +15,21 @@ if (isset($_GET['id'])) {
 
 
 <a class="btn btn-secondary my-4" href="new-article.php">New article</a>
-<div class="article container bg-light p-4">
+<div class="article container bg-light p-4 border">
 
     <?php if ($article) : ?>
 
         <article>
             <h2><?= htmlspecialchars($article->title); ?></h2>
-            <p>Published on <?= htmlspecialchars($article->published_date); ?></p>
-            <?php if ($article->image_file) : ?>
-                <img src="../uploads/<?= $article->image_file; ?>">
-            <?php endif; ?>
+            <small> <time datetime="<?= $article->published_date ?>">
+                    <?php
+                    $datetime = new DateTime($article->published_date);
+                    echo $datetime->format("F, Y");
+                    ?></time></small>
 
+            <?php if ($article->image_file) : ?>
+                <img class="p-2 img-fluid" src="../uploads/<?= $article->image_file; ?>">
+            <?php endif; ?>
             <p><?= htmlspecialchars($article->content); ?></p>
         </article>
         <a class="btn btn-info my-4" href="./edit-article.php?id=<?= $article->id; ?>">Edit </a>

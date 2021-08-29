@@ -4,11 +4,11 @@
  * Configuration settings
  */
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'database name');
-define('DB_USER', 'username');
-define('DB_PASS', 'password');
+define('DB_HOST', 'mysql');
+define('DB_NAME', 'blogger');
+define('DB_USER', 'root');
+define('DB_PASS', 'root');
 
-define('SMTP_HOST', 'mail.afdaexample.com');
-define('SMTP_USER', 'user@example.com');
-define('SMTP_PASS', 'secret pass');
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_USER', 'gaurav123mainuser@gmail.com');
+define('SMTP_PASS', 'Javascript@135830');

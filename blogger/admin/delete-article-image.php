@@ -20,34 +20,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $previous_image = $article->image_file;
 
     if ($article->setImageFile($conn, null)) {
-
-
         if ($previous_image) {
             unlink("../uploads/$previous_image");
         }
-
-
-        header("Location: article.php?id=$article->id");
     }
+    header("Location: ./edit-article.php?id=$article->id;");
 }
 
 ?>
 <?php require 'includes/header.php'; ?>
 
-<h2>Delete article image</h2>
-
 <form method="post">
-
-    <p> Are you sure to remove this image ?</p>
-
-    <button>Delete</button>
-
-    <a href="edit-article-image.php?id=<?= $article->id; ?>">Cancel</a>
-
-
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"> Delete article image </h5>
+        </div>
+        <div class="modal-body">
+            Are you sure to delete this image ?
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a class="btn btn-info" href="edit-article.php?id=<?= $article->id; ?>">Cancel</a>
+        </div>
+    </div>
 </form>
 
-<h2>Edit article</h2>
 
 <?php require 'includes/article-form.php'; ?>
 

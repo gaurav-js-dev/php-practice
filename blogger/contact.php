@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if (!empty($errors)) : ?>
         <ul>
             <?php foreach ($errors as $error) : ?>
-                <li><?= $error ?></li>
+                <li class="text-danger"><?= $error ?></li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>

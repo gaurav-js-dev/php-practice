@@ -20,8 +20,8 @@ This applications includes various features as below
 
 To access the admin area use following credentials
 
-username : dave
-password : secret
+username : **dave**  
+password : **secret**
 
 ## Local usage instructions
 
