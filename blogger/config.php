@@ -4,11 +4,11 @@
  * Configuration settings
  */
 
-define('DB_HOST', 'mysql');
-define('DB_NAME', 'blogger');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'database name');
+define('DB_USER', 'username');
+define('DB_PASS', 'password');
 
-define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_USER', 'example@gmail.com');
-define('SMTP_PASS', 'Secret');
+define('SMTP_HOST', 'mail.example.com');
+define('SMTP_USER', 'user@example.com');
+define('SMTP_PASS', 'secret pass');
