@@ -29,6 +29,9 @@
 
     <?php endif; ?>
 
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary"> <?= $article->id ? 'Update' : "Add"; ?> </button>
+    <?php if ($article->id) : ?>
+        <a class="btn btn-dark my-4" href="./edit-article-image.php?id=<?= $article->id; ?>">Upload New Image </a>
+    <?php endif; ?>
 
 </form>

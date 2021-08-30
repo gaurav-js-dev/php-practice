@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea class="form-control" name="message" id="message" placeholder="Message"><?= htmlspecialchars($message) ?></textarea>
             </div>
 
-            <button class="btn">Send</button>
+            <button class="btn btn-dark">Send</button>
 
         </form>
     </div>
